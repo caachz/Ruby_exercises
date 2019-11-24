@@ -102,9 +102,8 @@ class NestedTest < MiniTest::Test
   end
 
   def test_full_menu_for_olive_garden
-    require 'pry'; binding.pry
     #=======================
-    olive_garden_menu = 'risotto' => {'name' => 'Risotto', 'ingredients' => ['Rice','Cheese','Butter'], 'price' => 12}
+    olive_garden_menu = {risotto: {name: 'Risotto', ingredients: ['Rice','Cheese','Butter'], price: 12}}
     #=======================
     expected = ({"Risotto"=>{:name=>"Risotto", :ingredients=>["Rice", "Cheese", "Butter"], :price=>12},
                   "Steak"=>{:name=>"Steak", :ingredients=>["Beef", "Garlic"], :price=>15}})
