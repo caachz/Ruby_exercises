@@ -103,7 +103,11 @@ class NestedTest < MiniTest::Test
 
   def test_full_menu_for_olive_garden
     #=======================
-    olive_garden_menu = {risotto: {name: 'Risotto', ingredients: ['Rice','Cheese','Butter'], price: 12}}
+    hash_of_dishes = {}
+    stores[:olive_garden][:dishes].each do |dish|
+      hash_of_dishes[dish[:name]] = dish
+    end
+    olive_garden_menu = hash_of_dishes
     #=======================
     expected = ({"Risotto"=>{:name=>"Risotto", :ingredients=>["Rice", "Cheese", "Butter"], :price=>12},
                   "Steak"=>{:name=>"Steak", :ingredients=>["Beef", "Garlic"], :price=>15}})
@@ -111,9 +115,14 @@ class NestedTest < MiniTest::Test
   end
 
   def test_menu_accross_all_restaurants
-     skip
     #=======================
-    #  full_menu = <your code here>
+    hash_of_all_dishes = {}
+    stores.each do |store|
+      store[1][:dishes].each do |dish|
+        hash_of_all_dishes[dish[:name]] = dish
+      end
+    end
+      full_menu = hash_of_all_dishes
     #=======================
     expected = ({"Risotto"=>
                       {:name=>"Risotto", :ingredients=>["Rice", "Cheese", "Butter"], :price=>12},
