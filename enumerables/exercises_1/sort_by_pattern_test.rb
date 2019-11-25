@@ -23,6 +23,8 @@ class SortByPatternTest < Minitest::Test
     transformed = []
     things.each do |thing|
       # Your code goes here
+      things.sort {|a,b| a[-1] <=> b[-1]}
+      require 'pry'; binding.pry
     end
     transformed = transformed.sort
     sorted = []
